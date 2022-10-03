@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Models\Permission;
 use App\Models\User;
 
@@ -68,21 +69,23 @@ class UserController extends Controller
 
   //-------------------------------------------------------------------------------------
 
-  public function Store(Request $request)
+  public function Store(UserRequest $request)
   {
-    return $this->Save($request);
+    if($request->validated())
+      return $this->Save($request);
   }
 
   //-------------------------------------------------------------------------------------
 
-  public function Update(Request $request, $idUser)
+  public function Update(UserRequest $request, $idUser)
   {
-    return $this->Save($request, $idUser);
+    if($request->validated())
+      return $this->Save($request, $idUser);
   }
-  
+
   //-------------------------------------------------------------------------------------
 
-  private function Save(Request $request, $idUser = null)
+  private function Save(UserRequest $request, $idUser = null)
   {
     try
     {
@@ -110,7 +113,10 @@ class UserController extends Controller
 
         UserPermissionController::Handle($user, $request["id_permission"]);  
 
-        return back()->withMessage('Registro criado com sucesso');
+        if($isStore)
+          return back()->withMessage('Registro criado com sucesso');
+        else
+          return back()->withMessage('Registro atualizado com sucesso');
       });
     }
     catch(Exception $e)

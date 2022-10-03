@@ -48,19 +48,21 @@
           <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="isset($item) ? $item->email : ''" required />
         </div>
 
+        @if(!isset($item))
         <!-- Password -->
         <div class="mt-4">
           <x-input-label for="password" :value="__('Senha')" />
 
-          <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" autocomplete="new-password" />
+          <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" autocomplete="new-password" required />
         </div>
 
         <!-- Confirm Password -->
         <div class="mt-4">
           <x-input-label for="password_confirmation" :value="__('Confirmação de Senha')" />
 
-          <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" />
+          <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
         </div>
+        @endif
 
         <!-- É administrador? -->
         <div class="mt-4">
