@@ -18,23 +18,20 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-
-
-Route::resource('users', UserController::Class, ['as' => 'admins']);
-
+Route::middleware('isAdmin')->group(function ()
+{
+  Route::resource('users', UserController::Class, ['as' => 'admins']);
+});
 
 Route::get('files',      [FileController::Class,     'Index'])->name('all.files.index');
 Route::get('categories', [CategoryController::Class, 'Index'])->name('all.categories.index');
 Route::get('courses',    [CourseController::Class,   'Index'])->name('all.courses.index');
-
-
 
 require __DIR__.'/auth.php';
