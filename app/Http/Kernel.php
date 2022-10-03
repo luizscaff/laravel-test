@@ -42,6 +42,10 @@ class Kernel extends HttpKernel
           \App\Http\Middleware\IsAdmin::class,
         ],
 
+        'userPermission' => [
+          \App\Http\Middleware\UserPermission::class,
+        ],
+
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
