@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserPermission extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  protected $primaryKey = 'id_user_permission';
 }
