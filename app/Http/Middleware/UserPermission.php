@@ -17,9 +17,9 @@ class UserPermission
    */
   public function handle(Request $request, Closure $next)
   {
-    if (!Auth::user())
+    if (!Auth::user() || Auth::user()->is_admin)
     {
-      return redirect('/');
+      return redirect()->route("dashboard")->withError("Acesso negado.");
     }
     else if(Auth::user() && !Auth::user()->is_admin)
     {
@@ -49,7 +49,7 @@ class UserPermission
       if($userAccess > 0)
         return $next($request);
       else
-        return redirect('/');
+        return redirect()->route("dashboard")->withError("Acesso negado. Entre em contato com o administrador.");
     }
     else
     {

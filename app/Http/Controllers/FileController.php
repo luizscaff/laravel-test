@@ -12,6 +12,8 @@ class FileController extends Controller
   {
     try
     {
+      \Session::flash('message', 'Acesso concedido!'); 
+
       return view('layouts.index.files');
     }
     catch(Exception $e)

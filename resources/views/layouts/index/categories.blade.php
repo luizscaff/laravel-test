@@ -6,7 +6,8 @@
   </x-slot>
   <x-slot name="slot">
     <x-content-card>
-      Acesso concedido!
+      <!-- Messages -->
+      <x-messages-panel />
     </x-content-card>
   </x-slot>
 </x-app-layout>

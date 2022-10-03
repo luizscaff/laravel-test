@@ -12,6 +12,8 @@ class CategoryController extends Controller
   {
     try
     {
+      \Session::flash('message', 'Acesso concedido!'); 
+
       return view('layouts.index.categories');
     }
     catch(Exception $e)

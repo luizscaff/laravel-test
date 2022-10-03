@@ -12,6 +12,8 @@ class CourseController extends Controller
   {
     try
     {
+      \Session::flash('message', 'Acesso concedido!'); 
+
       return view('layouts.index.courses');
     }
     catch(Exception $e)
