@@ -56,7 +56,7 @@
           </tbody>
         </table>
       </div>
-</x-content-card>
+    </x-content-card>
   </x-slot>
 </x-app-layout>
 

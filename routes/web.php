@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -22,6 +25,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
+
 Route::resource('users', UserController::Class, ['as' => 'admins']);
+
+
+Route::get('files',      [FileController::Class,     'Index'])->name('all.files.index');
+Route::get('categories', [CategoryController::Class, 'Index'])->name('all.categories.index');
+Route::get('courses',    [CourseController::Class,   'Index'])->name('all.courses.index');
+
+
 
 require __DIR__.'/auth.php';
