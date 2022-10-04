@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('Usuários') }}
+      {{ __('Permissões') }}
     </h2>
   </x-slot>
   <x-slot name="slot">
@@ -11,9 +11,9 @@
     <x-messages-panel />
       <div class="row">
         <div class="col">
-          <a href="{{ route( 'admins.users.create' ) }}" class="btn btn-primary mb-3" >
+          <a href="{{ route( 'admins.permissions.create' ) }}" class="btn btn-primary mb-3" >
             <i class="fas fa-plus"></i>&nbsp;&nbsp;
-            Novo Usuário
+            Nova Permissão
           </a>
         </div>
       </div>
@@ -22,26 +22,24 @@
           <thead>
             <tr>
               <th>Nome</th>
-              <th>E-mail</th>
-              <th>É admin?</th>
+              <th>Rota</th>
               <th>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
-            @forelse($list as $user)
+            @forelse($list as $permission)
               <tr>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->is_admin ? "Sim" : "Não" }}</td>
+                <td>{{ $permission->name }}</td>
+                <td>{{ $permission->route }}</td>
                 <td>
-                <a href="{{ route( 'admins.users.edit', $user->id) }}" class="btn btn-primary reportBtn" id="edit-{{ $user->id }}">
+                <a href="{{ route( 'admins.permissions.edit', $permission->id_permission) }}" class="btn btn-primary reportBtn" id="edit-{{ $permission->id_permission }}">
                   <i class="fas fa-pen-alt" style="font-size:11pt"></i>
                 </a>
-                <form id="delete-form-{{$user->id}}" action="{{ route( 'admins.users.destroy', $user->id) }}"
+                <form id="delete-form-{{$permission->id_permission}}" action="{{ route( 'admins.permissions.destroy', $permission->id_permission) }}"
                       method="POST" class="inline">
                   @csrf
                   @method('DELETE')
-                  <a href="#" class="btn btn-danger reportBtn" id="delete-{{ $user->id }}"
+                  <a href="#" class="btn btn-danger reportBtn" id="delete-{{ $permission->id_permission }}"
                     onclick="if (confirm('Deseja excluir esse registro?')) { event.preventDefault(); this.closest('form').submit();}">
                     <i class="fas fa-trash-alt"></i>
                   </a>
@@ -50,7 +48,7 @@
               </tr>
             @empty
               <tr>
-                <td colspan="7">Nenhum usuário cadastrado</td>
+                <td colspan="7">Nenhuma permissão cadastrada</td>
               </tr>
             @endforelse
           </tbody>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -27,7 +28,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware('isAdmin')->group(function ()
 {
-  Route::resource('users', UserController::Class, ['as' => 'admins']);
+  Route::resource('users',       UserController::Class,       ['as' => 'admins']);
+  Route::resource('permissions', PermissionController::Class, ['as' => 'admins']);
 });
 
 Route::middleware(['userPermission'])->group(function ()

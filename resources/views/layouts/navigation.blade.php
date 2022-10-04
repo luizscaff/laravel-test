@@ -37,23 +37,27 @@
 
                         @if(Auth::user()->is_admin)
 
-                        <x-dropdown-link :href="route('admins.users.index')">
-                          {{ __('Usuários') }}
-                        </x-dropdown-link>
+                          <x-dropdown-link :href="route('admins.users.index')">
+                            {{ __('Usuários') }}
+                          </x-dropdown-link>
+
+                          <x-dropdown-link :href="route('admins.permissions.index')">
+                            {{ __('Permissões') }}
+                          </x-dropdown-link>
 
                         @else
 
-                        <x-dropdown-link :href="route('all.files.index')">
-                          {{ __('Arquivos') }}
-                        </x-dropdown-link>
+                          <x-dropdown-link :href="route('all.files.index')">
+                            {{ __('Arquivos') }}
+                          </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('all.categories.index')">
-                          {{ __('Categorias') }}
-                        </x-dropdown-link>
+                          <x-dropdown-link :href="route('all.categories.index')">
+                            {{ __('Categorias') }}
+                          </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('all.courses.index')">
-                          {{ __('Cursos') }}
-                        </x-dropdown-link>
+                          <x-dropdown-link :href="route('all.courses.index')">
+                            {{ __('Cursos') }}
+                          </x-dropdown-link>
 
                         @endif
 
