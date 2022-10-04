@@ -4,7 +4,7 @@ Olá! Essa é a minha resolução do teste prático para desenvolvedor PHP (Lara
 
 Essa resolução foi desenvolvida com Laravel 9.x em ambiente Linux (Ubuntu);
 
-Antes da primeira utilização, é necessário configurar o arquivo .env, o ambiente local e rodar os seguintes comandos:
+Antes da primeira utilização, é necessário configurar o arquivo .env, o ambiente local e executar os seguintes comandos:
 
     "composer update",
     
